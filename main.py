@@ -186,8 +186,14 @@ def chapter2():
         print("try again")
         lord()
     print("qwerty. aanyway continue")
-      
-    
+    def funcqwerty():
+      qwerty = input("there are 4 people in this room, you cAan talk to the people  (1-4) or leave the car(5)")
+      if qwerty == "1":
+        print("hey.if you want anything, head to the next car. the bar there is full of soda")
+        funcqwerty()
+      elif qwerty == "2":
+        print(" if you didnt...who killed thst guy then...")
+      elif qwerty
 def bozoending():
     print("you died, game over. you had no chance. hee hee hoo hoo.")
     time.sleep(3)
@@ -209,3 +215,4 @@ def main():
 
 #this is the main funtion caller (PHIL [ps: beat not to delete this, {pps: unless you need to}])
 main()
+print("thank you so much for playing Express86 VER. 0.4")
