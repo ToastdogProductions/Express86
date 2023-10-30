@@ -9,48 +9,50 @@ def chapter1end():
       print("end of chapter 1 ")
       print("you have " + str(Data["soda"]) + " sodas")
       print("You finished chapter: " + str(Data["chapter"]))
+      print("")
       
 
 def oldman():
   global Data, oldhp
   print(oldhp)
   bput = input("the old man charges at you, you can hit them with a soda(1), or you can dodge(2) ")
-  if bput == "1":
-    if Data["soda"] == 0:
-      print("you have no soda")
-      print("try something else.")
-      oldman()
-    else:
-      print("the soda waded him off,for now")
-      oldhp -= 1
-      Data["soda"] -= 1 
-      time.sleep(2)
-      print("the old man has returned!!!")
-      oldman()
-    if oldhp < 1:
+  if oldhp < 1:
       print("the old man is dead.")
       time.sleep(5)
       print("Y0U killed him.")
-    else:
-      time.sleep(4)
-      print("the old man has returned!!!")
-      oldman()
-  elif bput == "2":
-    print(" you dodge the old man, as he readys to shoot his scary shotgun, you kick him in the face.")
-    oldhp -= 1
-    if oldhp < 1:
-      print("the old man is dead.")
-      time.sleep(5)
-      print("Y0U killed him.")
-    else:
-       print("the old man is madder now.")
-    time.sleep(3)
-    oldman()
   else:
-    print("the old deranged man killed you. L")
-    bozoending()
+    if bput == "1":
+      if Data["soda"] == 0:
+        print("you have no soda")
+        print("try something else.")
+        oldman()
+      else:
+        print("the soda waded him off,for now")
+        oldhp -= 2
+        Data["soda"] -= 1 
+        time.sleep(2)
+        print("the old man has returned!!!")
+        oldman()
+      if oldhp < 1:
+        print("the old man is dead.")
+        time.sleep(5)
+        print("Y0U killed him.")
+      else:
+        time.sleep(4)
+        print("the old man has returned!!!")
+        oldman()
+    elif bput == "2":
+        print(" you dodge the old man, as he readys to shoot his scary shotgun, you kick him in the face.")
+        oldhp -= 1
+        if oldhp >= 1:
+          print("the old man is madder now.")
+          time.sleep(3)
+          oldman()    
+    else:
+      print("the old deranged man killed you. L")
+      bozoending()
 
-def room2():
+#def room2():
     while True:
         choice = input("You find yourself in the next train car. There is a gramophone(1), an empty soda can(2), and the exit into the next train car(3). What will you do? ")
         
@@ -71,7 +73,8 @@ def intro():
   
   print("Chapter 0, into the train ")
   time.sleep(1)
-  print("hey how did this bum, get on the train, it's like 30 dollars to get on. ")
+  print("")
+  print("\"hey how did this bum, get on the train, it's like 30 dollars to get on. \"")
   time.sleep(2)
   name = input("who even are you anyway ")
   if name == "Tristan" or name == "tristan":
@@ -85,22 +88,23 @@ def chapter0():
   potato = 0
   time.sleep(3)
   interaction = input("there are three people on this train, you can talk to person 1, 2, or 3 or leave the train car,\nplease enter a number:  ")
+  print("")
   if interaction == "1":
-      print("don't drink the water... the put something in it.. to make you forget. wait wrong water. ")
+      print("\"don't drink the water... the put something in it.. to make you forget. wait wrong water. \"")
       chapter0()
   elif interaction == "2":
       if potato < 10:
-        print("what do you want... nerd ")
+        print("\"what do you want... nerd \"")
         potato += 1
         chapter0()
       elif potato == 10:
-        print("i'll give you this potato if you leave me alone.")
+        print("\"i'll give you this potato if you leave me alone.\"")
         time.sleep(3)
-        print("You have recieved \" Brayden the P0tato\" ")
+        print("You have recieved \' Brayden the P0tato\' ")
         Potat = 1
         chapter0
       else:
-        print("leave me alone " + Data["name"])  
+        print("\"leave me alone " + Data["name"] + "\"")  
         chapter0()
         
   elif interaction == "3":
@@ -109,9 +113,10 @@ def chapter0():
         Data["soda"] += 1
         chapter0()
       else:
-        print("I don't have a Soda for you... sorry")
+        print("\"I don't have a Soda for you... sorry\"")
         chapter0()
   else:
+      print("")
       print("you decide to leave the train car ")
       print("end of chapter 1 ")
       print("you have " + str(Data["soda"]) + " sodas")
@@ -124,19 +129,19 @@ def chapter1():
   print("")
   room = input("you find yourself in another train car, you see a person(1), a fridge(2), and the exit to  the train car(3), where do you go?")
   if room == "1":
-    print("you know there are some dangerous people on this train, you can use soda to ward them off...")
+    print("\"you know there are some dangerous people on this train, you can use soda to ward them off...\"")
     permission = 1
     time.sleep(2)
-    print("there is some of my arsenal in that fridge, I don't know how many haven't gone flat.")
-    print("don't worry... i gave up escape a long time ago.")
+    print("\"here is some of my arsenal in that fridge, I don't know how many haven't gone flat.\"")
+    print("\"don't worry... i gave up escape a long time ago.\"")
     time.sleep(3)
     chapter1()
   elif room == "2":
     if permission == 0:
-      print("hey punk, the least you could do is ask first...")
+      print("\"hey punk, the least you could do is ask first...\"")
       chapter1()
     elif permission == 1:
-      print("yup thats it... There might be some   usably ones in there")
+      print("\" thats it... There might be some   usably ones in there\"")
       Data["soda"]  += 4
 
   else: room2()
@@ -168,6 +173,7 @@ def chapter1():
     chapter1end()
 
 def chapter2():
+    global Data,permission
     print("")
     print("")
     print("you are in the next train car, the large group of people are in this car")
@@ -187,13 +193,28 @@ def chapter2():
         lord()
     print("qwerty. aanyway continue")
     def funcqwerty():
+      global Data,permission
       qwerty = input("there are 4 people in this room, you cAan talk to the people  (1-4) or leave the car(5)")
       if qwerty == "1":
         print("hey.if you want anything, head to the next car. the bar there is full of soda")
         funcqwerty()
       elif qwerty == "2":
-        print(" if you didnt...who killed thst guy then...")
-      elif qwerty
+        print(" if you didnt...who killed that guy then...")
+        funcqwerty()
+      elif qwerty == "3":
+        print("...")
+        print("you wanna soda?")
+        Data["soda"] += 1
+        funcqwerty()
+      elif qwerty == "4":
+        print("that dang Dr. Tupple. not all of us want to be... nevermind")
+        funcqwerty()
+      elif qwerty == "5":
+        print("you leave the traincar... again")
+      else:
+        print("please try again")
+        funcqwerty()
+         
 def bozoending():
     print("you died, game over. you had no chance. hee hee hoo hoo.")
     time.sleep(3)
