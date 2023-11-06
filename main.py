@@ -4,8 +4,11 @@ Data = {"soda": 0, "chapter": 0,"name": ""}
 oldhp = 10
 permission = 0
 Potat = 0
-
-def chapter1end():
+potato = 0
+Bars = 0
+      
+def chapterend():
+      global Data
       print("end of chapter 1 ")
       print("you have " + str(Data["soda"]) + " sodas")
       print("You finished chapter: " + str(Data["chapter"]))
@@ -52,7 +55,7 @@ def oldman():
       print("the old deranged man killed you. L")
       bozoending()
 
-#def room2():
+def room2():
     while True:
         choice = input("You find yourself in the next train car. There is a gramophone(1), an empty soda can(2), and the exit into the next train car(3). What will you do? ")
         
@@ -68,10 +71,12 @@ def oldman():
         else:
             print("WRONG! .")
 
-def intro():
+def intro():  
   global Data
   
-  print("Chapter 0, into the train ")
+  print("Chapter 0 ")
+  print("")
+  print(" into the train")
   time.sleep(1)
   print("")
   print("\"hey how did this bum, get on the train, it's like 30 dollars to get on. \"")
@@ -84,8 +89,7 @@ def intro():
     print("that is a better name than tristan")
     
 def chapter0():
-  global Data, Potat
-  potato = 0
+  global Data, Potat, potato
   time.sleep(3)
   interaction = input("there are three people on this train, you can talk to person 1, 2, or 3 or leave the train car,\nplease enter a number:  ")
   print("")
@@ -102,9 +106,12 @@ def chapter0():
         time.sleep(3)
         print("You have recieved \' Brayden the P0tato\' ")
         Potat = 1
-        chapter0
-      else:
+        chapter0()
+      elif potato > 10:
         print("\"leave me alone " + Data["name"] + "\"")  
+        chapter0()
+      else:
+        print("\"Buzz of, " + Data["name"] + "\"now.")  
         chapter0()
         
   elif interaction == "3":
@@ -126,6 +133,8 @@ def chapter1():
   global Data,permission
   Data["chapter"] = 1
   print("")
+  print("Chapter 1")
+  print("Rolling Tracks")
   print("")
   room = input("you find yourself in another train car, you see a person(1), a fridge(2), and the exit to  the train car(3), where do you go?")
   if room == "1":
@@ -170,11 +179,14 @@ def chapter1():
     print("there is nothing left for you here,")
     print("even if you check the shotgun, its empty.")
     print("you decide to leave the traincar.")
-    chapter1end()
+    chapterend()
 
 def chapter2():
     global Data,permission
+    Data["chapter"] = 2
     print("")
+    print("Chapter 2")
+    print("The Guilt of the Swig")
     print("")
     print("you are in the next train car, the large group of people are in this car")
     print("well that came back to bite FAST")
@@ -193,7 +205,7 @@ def chapter2():
         lord()
     print("qwerty. aanyway continue")
     def funcqwerty():
-      global Data,permission
+      global Data
       qwerty = input("there are 4 people in this room, you cAan talk to the people  (1-4) or leave the car(5)")
       if qwerty == "1":
         print("hey.if you want anything, head to the next car. the bar there is full of soda")
@@ -214,11 +226,44 @@ def chapter2():
       else:
         print("please try again")
         funcqwerty()
+    def Barscene():
+      global Data, Bars
+      newsit = input("the next traincar is a bar, there is a woman at said bar, you can talk to her(1) or you can leave(2)")
+      if newsit == "1":
+          #print("/placeholder dialouge(phil remember to mention conductor and cronies, they are important later)/")
+          if Bars == 0:
+            print("\" you must be new here \"")
+            time.sleep(1)
+            print("\"you must be " + str(Data["name"]) + " right\"")
+            time.sleep(1)
+            print("\" somebody told me all about you\"")
+            time.sleep(2)
+            print("\" yknow... the conductors cronies control the train up ahead, and they aren't the friendliest bunch\"")
+            print("\" and one thing they don't like is people trying to leave this place\"")
+            time.sleep(2)
+            print("\" I've seen so many people try to stop the train. none of them ever have.\"")
+            time.sleep(3)
+            print("\"here, take a few sodas and head on your way. I shouldn't be running this bar anyway\"")
+            Data["soda"] += 10
+            time.sleep(1)
+            print("\" and stop this dang train. for all of us.\"")
+          else:
+            print("come on! go! stop the train and get us all out of here")
+            Barscene()
+      elif newsit == "2":
+        print("you leave the traincar")
+        chapterend()
+      else:
+          print("please put a valid input into console")
+          Barscene()
          
 def bozoending():
-    print("you died, game over. you had no chance. hee hee hoo hoo.")
+    print("You died. are you really getting off so soon?")
     time.sleep(3)
     print("THE END. you have the BOZO ending")
+    print("if you desire some clarity for the passengers of the train, and for yourself,")
+    time.sleep(1)
+    print("I canm assure you that... the conductor has taken care of them.")
     exit()
     
 
@@ -236,4 +281,4 @@ def main():
 
 #this is the main funtion caller (PHIL [ps: beat not to delete this, {pps: unless you need to}])
 main()
-print("thank you so much for playing Express86 VER. 0.4")
+print("thank you so much for playing Express86 VER. 0.5")
