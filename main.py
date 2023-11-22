@@ -14,8 +14,8 @@ playerHP = 10
 
 def chapterend():
       global Data
-      print("you have " + str(Data["soda"]) + " sodas")
       print("You finished chapter: " + str(Data["chapter"]))
+      print("you have " + str(Data["soda"]) + " sodas")
       print("")
 
 def soldierfight():
@@ -304,7 +304,7 @@ def chapter2():
 def chapter3():
   print("Chapter 3")
   print("")
-  print("Live Fire")
+  print("Live Fire Course")
   def flightcase01():
     print("in this car you see three people, one is a man on the floor, and another man who looks on in fear of the first one...")
     time.sleep(2)
@@ -315,6 +315,7 @@ def chapter3():
     elif leavebe == "2":
       print("you try to push over the man when he points a gun that seems to shoot peanuts at you, initiating a battle")
   soldierfight()
+  print("you've knocked him down, you don't know when he will get back up. best to move forward.")
 
 def bozoending():
     print("You died. are you really getting off so soon?")
