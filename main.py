@@ -1,19 +1,62 @@
 import time
+import random
 global Data
 Data = {"soda": 0, "chapter": 0,"name": ""}
 oldhp = 10
+soldierHP = 20
 permission = 0
 Potat = 0
 potato = 0
 Bars = 0
-      
+playerHP = 10
+
+#random.randrange(1,3)
+
 def chapterend():
       global Data
-      print("end of chapter 1 ")
       print("you have " + str(Data["soda"]) + " sodas")
       print("You finished chapter: " + str(Data["chapter"]))
       print("")
-      
+
+def soldierfight():
+  global Data, soldierHP
+  print("the soldier gets up and tries to shoot you when throw him.")
+  print(soldierHP)
+  Soldierput = input("the soldier prepares to shot you, you can hit them with a soda(1), or you can dodge(2) ")
+  if soldierHP > 1:
+    if Soldierput == 1:
+      if Data["soda"] == 0:
+          print("you have no soda")
+          print("try something else.")
+          soldierfight()
+          Data["soda"] -= 1 
+          time.sleep(2)
+          print("the soldier is going to shoot.")
+          soldierfire()
+      else: 
+          print("the soda hit! but hes not down yet...")
+          soldierHP -= 1
+          Data["soda"] -= 1
+          time.sleep(2)
+          soldierfire()
+    if Soldierput == "2":
+      print("you dodge and attempt to kickk him, but it doesnt do much.")
+      soldierHP =- 1
+    else:
+      return
+
+def soldierfire():
+  global Data, soldierHP, playerHP
+  Soldieraccuracy = random.randrange(1,3)
+  if Soldieraccuracy == 2:
+    print("the gaurd shot you, luckily it child friendly peanut, but your allergic!, and you took some damage")
+    print("the guard darts back")
+    playerHP =- 1
+    soldierfight()
+  else:
+    print("he almost shot you, but he missed thankfully")
+    soldierfight()
+
 
 def oldman():
   global Data, oldhp
@@ -58,7 +101,7 @@ def oldman():
 def room2():
     while True:
         choice = input("You find yourself in the next train car. There is a gramophone(1), an empty soda can(2), and the exit into the next train car(3). What will you do? ")
-        
+
         if choice == "1":
             print("You stare at the gramophone, but it was never a gramophone. It was an ATM.")
         elif choice == "2":
@@ -73,7 +116,7 @@ def room2():
 
 def intro():  
   global Data
-  
+
   print("Chapter 0 ")
   print("")
   print(" into the train")
@@ -87,7 +130,7 @@ def intro():
     name = "passenger 86"
   else:
     print("that is a better name than tristan")
-    
+
 def chapter0():
   global Data, Potat, potato
   time.sleep(3)
@@ -113,7 +156,7 @@ def chapter0():
       else:
         print("\"Buzz of, " + Data["name"] + "\"now.")  
         chapter0()
-        
+
   elif interaction == "3":
       if Data["soda"] == 0:
         print("here, have a soda ")
@@ -256,7 +299,23 @@ def chapter2():
       else:
           print("please put a valid input into console")
           Barscene()
-         
+      print("you decide to leave the traincar witha new objectrive, Stop This Train.")
+
+def chapter3():
+  print("Chapter 3")
+  print("")
+  print("Live Fire")
+  def flightcase01():
+    print("in this car you see three people, one is a man on the floor, and another man who looks on in fear of the first one...")
+    time.sleep(2)
+    print("the third man is... a soldier like fellow in many layers of metallic armour with a gas mask like helmet on, the suit apears to have hundreds of pipes running down its body, and looks ghenerally hostile")
+    leavebe = input("you can let the three continue what they were doing(1) or you could intervene(2)")
+    if leavebe == "1":
+      print("you decide to leave the traincar when the soldier stops you, initiating a battle")
+    elif leavebe == "2":
+      print("you try to push over the man when he points a gun that seems to shoot peanuts at you, initiating a battle")
+  soldierfight()
+
 def bozoending():
     print("You died. are you really getting off so soon?")
     time.sleep(3)
@@ -265,7 +324,7 @@ def bozoending():
     time.sleep(1)
     print("I canm assure you that... the conductor has taken care of them.")
     exit()
-    
+
 
 
 
@@ -282,3 +341,5 @@ def main():
 #this is the main funtion caller (PHIL [ps: beat not to delete this, {pps: unless you need to}])
 main()
 print("thank you so much for playing Express86 VER. 0.5")
+
+
